@@ -1,0 +1,856 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LPK Group | Tư vấn khai thác thương mại nông nghiệp</title>
+  <meta name="description" content="LPK Group chuyên tư vấn khai thác thương mại nông nghiệp, kết nối thị trường, phát triển chuỗi giá trị và nâng cao năng lực cạnh tranh cho doanh nghiệp, hợp tác xã và nhà sản xuất." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #1FA34A;
+      --orange: #FF8A00;
+      --blue: #1257A8;
+      --dark: #102033;
+      --text: #334155;
+      --muted: #64748B;
+      --light: #F8FAFC;
+      --white: #FFFFFF;
+      --border: #E2E8F0;
+      --shadow: 0 20px 50px rgba(15, 23, 42, 0.12);
+      --radius: 24px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1180px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      background: linear-gradient(90deg, var(--green), var(--orange), var(--blue));
+      color: #fff;
+      font-size: 14px;
+      padding: 8px 0;
+    }
+
+    .topbar .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      color: var(--blue);
+      font-size: 24px;
+      letter-spacing: -0.5px;
+    }
+
+    .brand img {
+      width: 56px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(18, 87, 168, 0.15);
+    }
+
+    .menu {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-weight: 700;
+      font-size: 15px;
+      color: var(--dark);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 0;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(18, 87, 168, 0.28);
+    }
+
+    .btn-secondary {
+      background: #fff;
+      color: var(--blue);
+      border: 1px solid rgba(18, 87, 168, 0.18);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(90deg, rgba(255,255,255,0.98) 0%, rgba(255,255,255,0.88) 42%, rgba(255,255,255,0.15) 72%),
+        url("assets/lpk-cover.png") center / cover no-repeat;
+      min-height: 680px;
+      display: flex;
+      align-items: center;
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      bottom: -90px;
+      width: 58%;
+      height: 220px;
+      background: linear-gradient(135deg, var(--green) 0 34%, #fff 34% 37%, var(--orange) 37% 60%, #fff 60% 63%, var(--blue) 63%);
+      transform: skewY(-12deg);
+      border-radius: 40px 0 0 0;
+      opacity: 0.98;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: min(680px, 100%);
+      padding: 80px 0;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(31, 163, 74, 0.1);
+      color: var(--green);
+      border-radius: 999px;
+      font-weight: 800;
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      color: var(--dark);
+      font-size: clamp(42px, 6vw, 76px);
+      line-height: 1.05;
+      margin: 0 0 18px;
+      letter-spacing: -2px;
+    }
+
+    h1 span {
+      color: var(--blue);
+    }
+
+    .hero p {
+      font-size: 20px;
+      color: #475569;
+      margin: 0 0 30px;
+      max-width: 650px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 640px;
+    }
+
+    .stat {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+    }
+
+    .stat strong {
+      color: var(--blue);
+      display: block;
+      font-size: 22px;
+      margin-bottom: 4px;
+    }
+
+    section {
+      padding: 90px 0;
+    }
+
+    .section-head {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 46px;
+    }
+
+    .section-head h2 {
+      color: var(--dark);
+      font-size: clamp(32px, 4vw, 48px);
+      margin: 0 0 14px;
+      letter-spacing: -1px;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 28px;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .green {
+      background: var(--green);
+    }
+
+    .orange {
+      background: var(--orange);
+    }
+
+    .blue {
+      background: var(--blue);
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--dark);
+      font-size: 22px;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about {
+      background: var(--light);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 48px;
+      align-items: center;
+    }
+
+    .about-logo {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 36px;
+      padding: 34px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .about-logo img {
+      width: min(380px, 100%);
+      border-radius: 32px;
+    }
+
+    .content h2 {
+      color: var(--dark);
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.1;
+      margin: 0 0 18px;
+      letter-spacing: -1px;
+    }
+
+    .content p {
+      margin: 0 0 18px;
+      color: #475569;
+      font-size: 17px;
+    }
+
+    .checklist {
+      display: grid;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .check {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font-weight: 700;
+      color: var(--dark);
+    }
+
+    .check span {
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .process {
+      counter-reset: step;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 28px;
+      overflow: hidden;
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: block;
+      color: rgba(18, 87, 168, 0.13);
+      font-size: 64px;
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .step h3 {
+      color: var(--dark);
+      margin: 0 0 8px;
+    }
+
+    .step p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .industries {
+      background: linear-gradient(135deg, rgba(31, 163, 74, 0.08), rgba(255, 138, 0, 0.08), rgba(18, 87, 168, 0.08));
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+    }
+
+    .tag {
+      background: #fff;
+      border: 1px solid var(--border);
+      color: var(--dark);
+      font-weight: 800;
+      border-radius: 999px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+    }
+
+    .cta {
+      padding: 0;
+      background: var(--dark);
+      color: #fff;
+    }
+
+    .cta-box {
+      position: relative;
+      overflow: hidden;
+      padding: 70px;
+      border-radius: 0;
+      background:
+        linear-gradient(135deg, rgba(18,87,168,0.9), rgba(16,32,51,0.94)),
+        url("assets/lpk-cover.png") center / cover no-repeat;
+    }
+
+    .cta-box::after {
+      content: "";
+      position: absolute;
+      right: -120px;
+      bottom: -80px;
+      width: 520px;
+      height: 180px;
+      background: linear-gradient(90deg, var(--green), var(--orange), var(--blue));
+      transform: skewY(-12deg);
+      border-radius: 40px;
+      opacity: 0.9;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      width: min(760px, 100%);
+    }
+
+    .cta h2 {
+      margin: 0 0 14px;
+      font-size: clamp(34px, 4vw, 54px);
+      line-height: 1.1;
+    }
+
+    .cta p {
+      margin: 0 0 26px;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: 18px;
+    }
+
+    .contact {
+      background: #fff;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 30px;
+    }
+
+    .contact-info, form {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
+
+    .contact-info h3, form h3 {
+      color: var(--dark);
+      margin: 0 0 18px;
+      font-size: 24px;
+    }
+
+    .info-row {
+      padding: 14px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .info-row:last-child {
+      border-bottom: 0;
+    }
+
+    .info-row strong {
+      display: block;
+      color: var(--dark);
+      margin-bottom: 4px;
+    }
+
+    label {
+      display: block;
+      color: var(--dark);
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      padding: 14px 15px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font: inherit;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(18, 87, 168, 0.1);
+    }
+
+    footer {
+      background: #0B1624;
+      color: rgba(255, 255, 255, 0.78);
+      padding: 34px 0;
+    }
+
+    footer .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    footer strong {
+      color: #fff;
+    }
+
+    @media (max-width: 900px) {
+      .menu {
+        display: none;
+      }
+
+      .hero {
+        min-height: auto;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.97), rgba(255,255,255,0.9)),
+          url("assets/lpk-cover.png") center / cover no-repeat;
+      }
+
+      .hero::after {
+        width: 100%;
+        height: 120px;
+      }
+
+      .stats,
+      .cards,
+      .steps,
+      .split,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 64px 0;
+      }
+
+      .cta-box {
+        padding: 50px 24px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(100% - 26px, 1180px);
+      }
+
+      .topbar .container {
+        font-size: 13px;
+      }
+
+      .brand {
+        font-size: 20px;
+      }
+
+      .brand img {
+        width: 48px;
+        height: 48px;
+      }
+
+      .hero-content {
+        padding: 58px 0 120px;
+      }
+
+      .hero p {
+        font-size: 17px;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .stat {
+        padding: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div>LPK Group - Tư vấn khai thác thương mại nông nghiệp</div>
+      <div>Email: ndkhanh484886@gmail.com | Hotline: 0857484886</div>
+    </div>
+  </div>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#home">
+        <img src="assets/lpk-logo.png" alt="LPK Group Logo">
+        <span>LPK Group</span>
+      </a>
+      <nav class="menu">
+        <a href="#about">Giới thiệu</a>
+        <a href="#services">Dịch vụ</a>
+        <a href="#process">Quy trình</a>
+        <a href="#contact">Liên hệ</a>
+        <a class="btn btn-primary" href="#contact">Nhận tư vấn</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div class="eyebrow">Nông nghiệp hiệu quả - Thương mại bền vững</div>
+          <h1>Khai thác giá trị <span>nông nghiệp</span> bằng chiến lược thương mại</h1>
+          <p>
+            LPK Group đồng hành cùng doanh nghiệp, hợp tác xã và nhà sản xuất trong tư vấn chiến lược,
+            kết nối thị trường, phát triển chuỗi giá trị và nâng cao năng lực cạnh tranh cho nông sản Việt.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#contact">Liên hệ tư vấn</a>
+            <a class="btn btn-secondary" href="#services">Xem dịch vụ</a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>01</strong>
+              Tư vấn chiến lược
+            </div>
+            <div class="stat">
+              <strong>02</strong>
+              Khai thác thị trường
+            </div>
+            <div class="stat">
+              <strong>03</strong>
+              Phát triển bền vững
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <div class="section-head">
+          <h2>Dịch vụ trọng tâm</h2>
+          <p>Giải pháp tư vấn và triển khai thương mại phù hợp cho doanh nghiệp nông nghiệp, hợp tác xã, nhà đầu tư và đơn vị sản xuất.</p>
+        </div>
+
+        <div class="cards">
+          <article class="card">
+            <div class="icon green">✓</div>
+            <h3>Tư vấn chiến lược</h3>
+            <p>Xây dựng định hướng thương mại, mô hình kinh doanh, kế hoạch tăng trưởng và chiến lược phát triển thị trường.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon orange">↗</div>
+            <h3>Khai thác thương mại</h3>
+            <p>Phân tích sản phẩm, xác định kênh bán hàng, định vị khách hàng mục tiêu và mở rộng cơ hội hợp tác kinh doanh.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon blue">◆</div>
+            <h3>Phát triển chuỗi giá trị</h3>
+            <p>Tối ưu chuỗi cung ứng, nâng cao năng lực vận hành và gia tăng giá trị cho nông sản theo hướng bền vững.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="container split">
+        <div class="about-logo">
+          <img src="assets/lpk-logo.png" alt="Logo LPK Group">
+        </div>
+
+        <div class="content">
+          <h2>Về LPK Group</h2>
+          <p>
+            LPK Group là đơn vị tư vấn khai thác thương mại nông nghiệp, tập trung hỗ trợ các tổ chức và doanh nghiệp
+            trong việc phát triển thị trường, kết nối đối tác, xây dựng thương hiệu và gia tăng giá trị sản phẩm.
+          </p>
+          <p>
+            Chúng tôi hướng đến mục tiêu đưa nông sản tiếp cận thị trường hiệu quả hơn thông qua chiến lược rõ ràng,
+            mô hình thương mại phù hợp và giải pháp vận hành thực tiễn.
+          </p>
+
+          <div class="checklist">
+            <div class="check"><span>✓</span> Tư duy chiến lược kết hợp thực tiễn thị trường</div>
+            <div class="check"><span>✓</span> Đồng hành cùng doanh nghiệp, hợp tác xã và nhà sản xuất</div>
+            <div class="check"><span>✓</span> Tập trung hiệu quả thương mại và phát triển bền vững</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process" class="process">
+      <div class="container">
+        <div class="section-head">
+          <h2>Quy trình đồng hành</h2>
+          <p>Một lộ trình rõ ràng giúp chuyển hóa tiềm năng nông sản thành giá trị thương mại thực tế.</p>
+        </div>
+
+        <div class="steps">
+          <div class="step">
+            <h3>Khảo sát</h3>
+            <p>Đánh giá sản phẩm, năng lực hiện tại, thị trường mục tiêu và nhu cầu phát triển.</p>
+          </div>
+          <div class="step">
+            <h3>Chiến lược</h3>
+            <p>Xây dựng định hướng thương mại, định vị thương hiệu và kế hoạch hành động.</p>
+          </div>
+          <div class="step">
+            <h3>Kết nối</h3>
+            <p>Hỗ trợ tiếp cận kênh phân phối, đối tác, khách hàng và cơ hội hợp tác phù hợp.</p>
+          </div>
+          <div class="step">
+            <h3>Tăng trưởng</h3>
+            <p>Theo dõi, tối ưu và phát triển mô hình thương mại theo mục tiêu dài hạn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="industries">
+      <div class="container">
+        <div class="section-head">
+          <h2>Lĩnh vực hỗ trợ</h2>
+          <p>LPK Group tập trung vào các nhóm sản phẩm và mô hình kinh doanh có tiềm năng phát triển thương mại.</p>
+        </div>
+
+        <div class="tags">
+          <span class="tag">Nông sản tươi</span>
+          <span class="tag">Nông sản chế biến</span>
+          <span class="tag">Hợp tác xã nông nghiệp</span>
+          <span class="tag">Chuỗi cung ứng</span>
+          <span class="tag">Thương hiệu nông sản</span>
+          <span class="tag">Xúc tiến thương mại</span>
+          <span class="tag">Kênh phân phối</span>
+          <span class="tag">Đối tác B2B</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta">
+      <div class="cta-box">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Sẵn sàng nâng tầm giá trị nông sản?</h2>
+            <p>
+              Kết nối với LPK Group để xây dựng chiến lược thương mại, khai thác thị trường và phát triển chuỗi giá trị bền vững.
+            </p>
+            <a class="btn btn-secondary" href="#contact">Bắt đầu trao đổi</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-head">
+          <h2>Liên hệ LPK Group</h2>
+          <p>Thông tin bên dưới có thể thay bằng số điện thoại, email, địa chỉ và website chính thức của công ty.</p>
+        </div>
+
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h3>Thông tin liên hệ</h3>
+            <div class="info-row">
+              <strong>Hotline</strong>
+              0857484886
+            </div>
+            <div class="info-row">
+              <strong>Email</strong>
+              ndkhanh484886@gmail.com
+            </div>
+          </div>
+
+          <form>
+            <h3>Đăng ký tư vấn</h3>
+            <label for="name">Họ và tên</label>
+            <input id="name" type="text" placeholder="Nhập họ và tên" />
+
+            <label for="phone">Số điện thoại</label>
+            <input id="phone" type="tel" placeholder="Nhập số điện thoại" />
+
+            <label for="service">Nhu cầu tư vấn</label>
+            <select id="service">
+              <option>Tư vấn chiến lược thương mại</option>
+              <option>Kết nối thị trường và đối tác</option>
+              <option>Phát triển chuỗi giá trị nông sản</option>
+              <option>Xây dựng thương hiệu nông sản</option>
+            </select>
+
+            <label for="message">Nội dung</label>
+            <textarea id="message" rows="5" placeholder="Chia sẻ thêm về nhu cầu của bạn"></textarea>
+
+            <button class="btn btn-primary" type="button">Gửi thông tin</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div><strong>LPK Group</strong> - Tư vấn khai thác thương mại nông nghiệp</div>
+      <div>© 2026 LPK Group. All rights reserved.</div>
+    </div>
+  </footer>
+</body>
+</html>
